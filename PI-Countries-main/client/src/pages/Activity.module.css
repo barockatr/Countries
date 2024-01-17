@@ -1,0 +1,68 @@
+.item{
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.content {
+  text-align: center;
+  padding-top: 85px;
+}
+
+.card {
+  line-height : 30px;
+  max-width: 60%;
+  list-style: none;
+  font-size: 1,5rem;
+  text-align: center;
+  background: linear-gradient(to bottom, #55626d, rgb(205, 205, 223));
+  box-shadow: 5px 5px 15px #2B3945;
+  border-radius: 15px;
+  min-height: 700px;
+  max-width: 550px;
+  margin: auto;
+  padding-top: 20px;
+}
+
+.countriesSelection {
+  padding-top: 20;
+  text-align: center;
+  width: auto;
+}
+
+.radioItem {
+  margin-left: 25px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: auto;
+  width: 500px;
+}
+
+.countriesList {
+  list-style: none;
+  display: flexbox;
+}
+
+.countryRow {
+  display: flex;
+}
+
+.countryListItem {
+  text-align: left;
+  padding: 3px;
+}
+
+.countryListButton {
+  text-align: right;
+  margin-right: 20px;
+  border-radius: 2px;
+}
+
+.error {
+  color: red;
+}
+

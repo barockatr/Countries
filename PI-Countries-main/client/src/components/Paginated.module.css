@@ -1,0 +1,43 @@
+nav {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: #525773;
+  font-size: 0.8em;
+}
+
+nav li a {
+  color: white;
+  display: block;
+  text-decoration: none;
+  padding: .2em 0.2em;
+}
+
+nav li a:hover {
+  background: #A4A6B9;
+  color: white;
+  cursor: pointer;
+}
+
+nav li a:active {
+  color: black;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 480px) {
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  nav li{
+    /*la caja puede crecer para ocupar todo el espacio disponible */
+    flex-grow: 1;
+    text-align: center;
+  }
+}

@@ -1,0 +1,45 @@
+.countryCard {
+  list-style: none;
+  font-size: 1,5rem;
+  text-align: center;
+  background: linear-gradient(to bottom, #55626d, rgb(205, 205, 223));
+  box-shadow: 5px 5px 15px #2B3945;
+  border-radius: 15px;
+  height: 360px;
+}
+
+.title {
+  color: black;
+  font-size: 1.4em;
+}
+
+.item {
+  color: #3d4a57;
+  font-size: 1.2em;
+}
+
+.image {
+  border-radius: 10px;
+  /* fijamos ancho y alto para reservar espacio */
+  width: 240px;
+  height: 135px;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+/* 
+///////
+.card {
+  color: #4e5b66;
+  line-height : 20px;
+  max-width: 60%;
+  list-style: none;
+  font-size: 1,5rem;
+  text-align: center;
+  background: linear-gradient(to bottom, #2B3945, rgb(205, 205, 223));
+  box-shadow: 5px 5px 15px #2B3945;
+  border-radius: 15px;
+  min-height: 700px;
+  max-width: 550px;
+  margin: auto;
+} */

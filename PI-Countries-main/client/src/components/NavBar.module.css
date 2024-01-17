@@ -1,0 +1,49 @@
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2B3945;
+  padding-right: 25px;
+  padding-left: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+}
+
+.button {
+  margin-right: 25px;
+  font-size: 1em;
+  width: 100px;
+  color: white;
+  background-color: #2B3945;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: rgb(139, 139, 139);
+  color: #2B3945;
+}
+
+.button:active {
+  background-color: rgb(219, 219, 219);
+  color: #2B3945;
+}
+
+.title {
+  font-family: Knewave;
+  letter-spacing: 0.05em;
+  
+  padding: 0px;
+  margin: 0px;
+  height: 70px;
+  font-size: 2.7em;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #212061, 0 0 40px #212061,
+    0 0 50px #212061;
+}
+
+

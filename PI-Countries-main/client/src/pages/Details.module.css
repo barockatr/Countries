@@ -1,0 +1,60 @@
+.content {
+  padding-top: 95px;
+}
+
+.card {
+  color: #3d4a57;
+  line-height : 20px;
+  max-width: 60%;
+  list-style: none;
+  font-size: 1,5rem;
+  text-align: center;
+  background: linear-gradient(to bottom, #55626d, rgb(205, 205, 223));
+  box-shadow: 5px 5px 15px #2B3945;
+  border-radius: 15px;
+  min-height: 700px;
+  max-width: 550px;
+  margin: auto;
+}
+
+.card h2 {
+  color: black;
+}
+
+.image {
+  border-radius: 10px;
+  /* fijamos ancho y alto para reservar espacio */
+  width: 350px;
+  height: 200px;
+  padding-top: 25px;
+}
+
+.item {
+  list-style: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding-top: 0px;
+}
+
+li > h3 {
+  margin: 0;
+  padding: 0;
+  padding-top: 12px;
+}
+
+.activity {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 0px;
+}
+
+.activityTitle {
+  align-self: flex-start;
+  color: black;
+}
+
+.activityItems {
+  text-align: left;
+}

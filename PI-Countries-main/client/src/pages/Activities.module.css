@@ -1,0 +1,46 @@
+.content {
+  padding-top: 95px;
+}
+
+.card {
+  color: #3d4a57;
+  line-height : 20px;
+  max-width: 60%;
+  list-style: none;
+  font-size: 1,5rem;
+  text-align: center;
+  background: linear-gradient(to bottom, #55626d, rgb(205, 205, 223));
+  box-shadow: 5px 5px 15px #2B3945;
+  border-radius: 15px;
+  min-height: 300px;
+  max-width: 550px;
+  margin: auto;
+  padding-bottom: 30px;
+}
+
+.image {
+  /* fijamos ancho y alto para reservar espacio */
+  width: 450px;
+  height: auto;
+  padding-top: 50px;
+}
+
+.card h2 {
+  color: black;
+  padding-top: 15px;
+}
+
+.activity {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 0px;
+}
+
+.activityTitle {
+  align-self: flex-start;
+}
+
+.activityItems {
+  text-align: left;
+}

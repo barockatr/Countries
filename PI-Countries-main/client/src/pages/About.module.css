@@ -1,0 +1,30 @@
+.content {
+  padding-top: 95px;
+}
+
+.card {
+  line-height : 20px;
+  max-width: 60%;
+  list-style: none;
+  font-size: 1,5rem;
+  text-align: center;
+  line-height : 40px;
+  background: linear-gradient(to bottom, #55626d, rgb(189, 189, 207));
+  box-shadow: 5px 5px 15px #2B3945;
+  border-radius: 15px;
+  min-height: 400px;
+  max-width: 450px;
+  margin: auto;
+  padding: 50px;
+}
+
+.card h2 {
+  color: black;
+  padding-top: 15px;
+}
+
+.card p {
+  color: #2B3945;
+  padding-top: 25px;
+  font-size: 1.2em;
+}
