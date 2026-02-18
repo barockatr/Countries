@@ -7,34 +7,41 @@ const getActivities = async (_req, res) => {
 		});
 		res.json(allActivities);
 	} catch (error) {
-		res.json({ error: 'Error reading database' });
+		console.error(error);
+		res.status(500).json({ error: 'Error reading database' });
 	}
 };
 
 const addActivity = async function (req, res) {
 	try {
 		const { name, difficulty, duration, season, countryId } = req.body;
-		let newActivity = await Activity.findOrCreate({
+
+		if (!name || !difficulty || !season) {
+			return res.status(400).json({ msg: 'Missing required fields' });
+		}
+
+		let [newActivity, created] = await Activity.findOrCreate({
 			where: {
-				name: name,
-				difficulty: difficulty,
-				duration: duration,
-				season: season
+				name,
+				difficulty,
+				duration,
+				season
 			}
 		});
-		//countryId = [Id1, Id2, ...]
-		for (let i = 0; i < countryId.length; i++) {
-			const match = await Country.findOne({
+
+		if (countryId && Array.isArray(countryId)) {
+			const countries = await Country.findAll({
 				where: {
-					id: countryId[i]
+					id: countryId
 				}
 			});
-
-			await newActivity[0].addCountry(match);
+			await newActivity.addCountries(countries);
 		}
-		res.json({ msg: 'Activity created' });
+
+		res.json({ msg: 'Activity created', activity: newActivity });
 	} catch (error) {
-		res.send({ msg: 'Server Error' });
+		console.error(error);
+		res.status(500).send({ msg: 'Server Error' });
 	}
 };
 

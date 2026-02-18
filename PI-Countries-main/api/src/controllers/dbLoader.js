@@ -2,40 +2,36 @@ const axios = require('axios');
 const { Country } = require('../db');
 const { URL_ALL } = require('../consts');
 
-const dbLoader = async function (_req, res) {
+const getApiData = async () => {
 	try {
 		const apiCountries = await axios.get(URL_ALL);
 		const dbCountries = apiCountries.data.map((c) => {
 			return {
-				alpha3Code: c.cca3,
+				id: c.cca3,
 				name: c.name.common,
-				flag: c.flags.svg,
-				region: c.region,
-				capital: c.capital ? c.capital[0] : 'No information',
-				subregion: c.subregion ? c.subregion : 'No information',
-				area: c.area ? c.area : 'No information',
-				population: c.population ? c.population : 'No information'
-				//gini: c.gini ? c.gini : 'No information'
-			};
-		});
-		//console.log(dbCountries);
-		dbCountries.map(async (c) => {
-			await Country.create({
-				id: c.alpha3Code,
-				name: c.name,
-				flag: c.flag,
-				region: c.region,
-				capital: c.capital,
-				subregion: c.subregion,
+				flag_image: c.flags.svg,
+				continent: c.continents ? c.continents[0] : 'Unknown',
+				capital: c.capital ? c.capital[0] : 'No capital',
+				subregion: c.subregion ? c.subregion : 'No subregion',
 				area: c.area,
 				population: c.population
-				//gini: c.gini
-			});
+			};
 		});
-		console.log('DB Loaded');
+		return dbCountries;
 	} catch (error) {
-		res.status(500).json({ msg: 'Server Error' });
+		console.error('Error fetching API data:', error);
+		return [];
 	}
 };
 
-module.exports = { dbLoader };
+const savedToDb = async () => {
+	try {
+		const countries = await getApiData();
+		await Country.bulkCreate(countries, { ignoreDuplicates: true }); // Prevent errors if run multiple times
+		console.log('DB Loaded');
+	} catch (error) {
+		console.error('Error saving to DB:', error);
+	}
+};
+
+module.exports = { savedToDb };
