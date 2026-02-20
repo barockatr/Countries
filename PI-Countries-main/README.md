@@ -1,171 +1,100 @@
-<p align='left'>
-    <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
-</p>
+# 🌀 PI Countries
+> **Plataforma interactiva para explorar países y gestionar actividades turísticas en todo el mundo.**
 
-# Individual Project - Henry Countries
+[![Ver Demo en Vivo](https://img.shields.io/badge/Ver_Demo_En_Vivo-FF0000?style=for-the-badge&logo=vercel&logoColor=white)](#)
+[![Reportar Bug](https://img.shields.io/badge/Reportar_Bug-000000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tu-usuario/PI-Countries/issues)
 
-<p align="left">
-  <img height="200" src="./countries.png" />
-</p>
+![Dashboard Preview](https://via.placeholder.com/800x450.png?text=Vista+Previa+del+Proyecto)
 
-## Objetivos del Proyecto
+## 📌 El Problema
+Encontrar información detallada sobre diferentes países y planificar actividades turísticas suele requerir consultas en múltiples fuentes dispersas, lo que dificulta la organización de viajes o la investigación geográfica. 
+**Solución:** PI Countries centraliza datos globales proporcionando una interfaz intuitiva donde los usuarios pueden buscar, filtrar y explorar información de países, además de un sistema integrado para crear y gestionar actividades turísticas personalizadas en múltiples destinos.
 
-- Construir una App utlizando React, Redux, Node y Sequelize.
-- Afirmar y conectar los conceptos aprendidos en la carrera.
-- Aprender mejores prácticas.
-- Aprender y practicar el workflow de GIT.
-- Usar y practicar testing.
+## ✨ Características Clave
+* **Búsqueda y Exploración Global**: Encuentra rápidamente países por nombre y visualiza detalles clave como capital, subregión, área y población.
+* **Filtros Avanzados y Ordenamiento**: Filtra países por continente y tipo de actividad turística. Ordena resultados alfabéticamente o por cantidad de población.
+* **Gestión de Actividades Turísticas**: Crea nuevas actividades (ej. Ski, Rafting) definiendo dificultad, duración y temporada, y asígnalas a uno o múltiples países simultáneamente.
+* **Navegación Optimizada**: Sistema de paginado eficiente para explorar el listado completo de países de forma fluida.
 
-## Horarios y Fechas
+## 🛠️ Stack Tecnológico
+- ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+- ![Redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
+- ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+- ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+- ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+- ![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white)
 
-El proyecto tendrá una duración máxima de tres semanas. En el caso de que completan todas las tareas antes de dicho lapso podrán avisar a su Instructor para coordinar una fecha de presentación del trabajo (DEMO).
+## 🚀 Instalación Rápida
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/tu-usuario/PI-Countries.git
+   cd PI-Countries/PI-Countries-main
+   ```
+2. **Instalar dependencias:**
+   ```bash
+   # En la carpeta de la API
+   cd api
+   npm install
 
-## Comenzando
+   # En la carpeta del cliente
+   cd ../client
+   npm install
+   ```
+3. **Configurar variables de entorno:**
+   Crea un archivo `.env` en la carpeta `api` con tus credenciales de PostgreSQL:
+   ```env
+   DB_USER=tu_usuario_postgres
+   DB_PASSWORD=tu_password_postgres
+   DB_HOST=localhost
+   ```
+4. **Base de datos:**
+   Asegúrate de tener PostgreSQL corriendo y crea una base de datos llamada `countries`.
+5. **Ejecutar el proyecto:**
+   ```bash
+   # Iniciar el servidor (desde la carpeta api)
+   npm start
 
- 1. Forkear el repositorio para tener una copia del mismo en sus cuentas
- 2. Clonar el repositorio en sus computadoras para comenzar a trabajar
+   # Iniciar el cliente (desde la carpeta client en otra terminal)
+   npm start
+   ```
 
-Tendrán un `boilerplate` con la estructura general tanto del servidor como de cliente.
+## 🏗️ Arquitectura y Estructura
+El proyecto sigue una arquitectura desacoplada (Decoupled Architecture) para separar responsabilidades y facilitar el testing:
+- `api/src/models/`: Definición de modelos relacionales (Country y Activity) con Sequelize, incluyendo la tabla intermedia para la relación N:N.
+- `api/src/routes/`: Modularización de endpoints para mantener un ruteo limpio y escalable.
+- `client/src/redux/`: Gestión del estado global con Redux, centralizando la lógica de filtros combinados.
+- `client/src/components/`: Componentes modulares y reutilizables para el renderizado dinámico de cards y formularios.
 
-__IMPORTANTE:__ Es necesario contar minimamente con la última versión estable de Node y NPM. Asegurarse de contar con ella para poder instalar correctamente las dependecias necesarias para correr el proyecto.
+## 💻 Implementación Técnica (Best Practices)
 
-Actualmente las versiónes necesarias son:
+### ⚡ Manejo de Asincronía y Data Seeding
+Se implementó una lógica de "Seeding" automática en el backend: al iniciar el servidor, la app consume la API externa de países, normaliza los datos y los persiste en **PostgreSQL**. Esto garantiza que la aplicación sea autónoma y las consultas sean ultrarrápidas al ser locales.
 
- * __Node__: 12.18.3 o mayor
- * __NPM__: 6.14.16 o mayor
+### 🛡️ Gestión de Errores (Try/Catch)
+Tanto en el cargado inicial de la DB como en la creación de actividades turísticas, se utilizan bloques `try/catch` robustos. Esto previene que una falla en la API externa o un dato duplicado rompan el servidor, devolviendo siempre una respuesta controlada.
 
-Para verificar que versión tienen instalada:
+### 🧩 Filtros Combinados y Lógica de Estado
+El mayor reto técnico fue la implementación de filtros cruzados en el Frontend. Se diseñó una lógica en **Redux** que permite filtrar por continente y actividad simultáneamente, manteniendo la coherencia de los datos y el ordenamiento (población/alfabético) sin perder el estado de la búsqueda actual.
 
-> node -v
->
-> npm -v
+### 🔑 Seguridad en la Base de Datos
+Uso estricto de variables de entorno para las credenciales de la DB, evitando la exposición de datos sensibles en el repositorio público.
 
-## BoilerPlate
+## 🧠 Retos Técnicos y Decisiones
+- **Relación Muchos a Muchos:** Se optó por una tabla intermedia en Sequelize para vincular Actividades y Países, permitiendo que un usuario cree una "Ruta de Trekking" que abarque varios países de una sola vez.
+- **Validaciones en el Frontend:** El formulario de actividades turísticas cuenta con validaciones en tiempo real para asegurar que la dificultad (1-5) y la duración sean coherentes antes de enviar el POST al servidor.
 
-El boilerplate cuenta con dos carpetas: `api` y `client`. En estas carpetas estará el código del back-end y el front-end respectivamente.
+## 🗺️ Roadmap (Próximas Mejoras)
+- [ ] Implementar un buscador inteligente con "Debounce" para optimizar las peticiones al servidor.
+- [ ] Agregar un sistema de favoritos persistente en el navegador.
+- [ ] Migrar el CSS a Tailwind o CSS Modules para mejorar el encapsulamiento de estilos.
 
-En `api` crear un archivo llamado: `.env` que tenga la siguiente forma:
+---
 
-```
-DB_USER=usuariodepostgres
-DB_PASSWORD=passwordDePostgres
-DB_HOST=localhost
-```
+## 👨‍💻 Autor
+**Antonio**
 
-Reemplazar `usuariodepostgres` y `passwordDePostgres` con tus propias credenciales para conectarte a postgres. Este archivo va ser ignorado en la subida a github, ya que contiene información sensible (las credenciales).
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](TU_LINKEDIN_REAL)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/barockatr)
 
-Adicionalmente será necesario que creen desde psql una base de datos llamada `countries`
-
-El contenido de `client` fue creado usando: Create React App.
-
-## Enunciado
-
-La idea general es crear una aplicación en la cual se pueda ver información de  distintos paises utilizando la api externa [restcountries](https://restcountries.eu/) y a partir de ella poder, entre otras cosas:
-
-  - Buscar paises
-  - Filtrarlos / Ordenarlos
-  - Crear actividades turísticas
-
-__IMPORTANTE__: Para las funcionalidades de filtrado y ordenamiento NO pueden utilizar los endpoints de la API externa que ya devuelven los resultados filtrados u ordenados sino que deben realizarlo ustedes mismos. En particular alguno de los ordenamientos o filtrados debe si o si realizarse desde el frontend.
-
-### Únicos Endpoints/Flags que pueden utilizar
-
-  - GET https://restcountries.eu/rest/v2/all
-  - GET https://restcountries.eu/rest/v2/name/{name}
-  - GET https://restcountries.eu/rest/v2/alpha/{code}
-
-### Requerimientos mínimos:
-
-A continuación se detallaran los requerimientos mínimos para la aprobación del proyecto individial. Aquellos que deseen agregar más funcionalidades podrán hacerlo. En cuanto al diseño visual no va a haber wireframes ni prototipos prefijados sino que tendrán libertad de hacerlo a su gusto pero tienen que aplicar los conocimientos de estilos vistos en el curso para que quede agradable a la vista.
-
-__IMPORTANTE__: No se permitirá utilizar librerías externas para aplicar estilos a la aplicación. Tendrán que utilizar CSS con algunas de las opciones que vimos en dicha clase (CSS puro, CSS Modules o Styled Components)
-
-#### Tecnologías necesarias:
-- [ ] React
-- [ ] Redux
-- [ ] Express
-- [ ] Sequelize - Postgres
-
-#### Frontend
-
-Se debe desarrollar una aplicación de React/Redux que contenga las siguientes pantallas/rutas.
-
-__Pagina inicial__: deben armar una landing page con
-- [ ] Alguna imagen de fondo representativa al proyecto
-- [ ] Botón para ingresar al home (`Ruta principal`)
-
-__Ruta principal__: debe contener
-- [ ] Input de búsqueda para encontrar países por nombre
-- [ ] Área donde se verá el listado de países. Al iniciar deberá cargar los primeros resultados obtenidos desde la ruta `GET /countries` y deberá mostrar su:
-  - Imagen de la bandera
-  - Nombre
-  - Continente
-- [ ] Botones/Opciones para filtrar por continente y por tipo de actividad turística
-- [ ] Botones/Opciones para ordenar tanto ascendentemente como descendentemente los países por orden alfabético y por cantidad de población
-- [ ] Paginado para ir buscando y mostrando los siguientes paises, 10 paises por pagina, mostrando los primeros 9 en la primer pagina.
-
-__Ruta de detalle de país__: debe contener
-- [ ] Los campos mostrados en la ruta principal para cada país (imagen de la bandera, nombre, código de país de 3 letras y continente)
-- [ ] Código de país de 3 letras (id)
-- [ ] Capital
-- [ ] Subregión
-- [ ] Área (Mostrarla en km2 o millones de km2)
-- [ ] Población
-- [ ] Actividades turísticas con toda su información asociada
-
-__Ruta de creación de actividad turística__: debe contener
-- [ ] Un formulario __controlado__ con los siguientes campos
-  - Nombre
-  - Dificultad
-  - Duración
-  - Temporada
-- [ ] Posibilidad de seleccionar/agregar varios países en simultaneo
-- [ ] Botón/Opción para crear una nueva actividad turística
-
-#### Base de datos
-
-El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterísco deben ser obligatorias):
-
-- [ ] País con las siguientes propiedades:
-  - ID (Código de 3 letras) *
-  - Nombre *
-  - Imagen de la bandera *
-  - Continente *
-  - Capital *
-  - Subregión
-  - Área
-  - Población
-- [ ] Actividad Turística con las siguientes propiedades:
-  - ID
-  - Nombre
-  - Dificultad (Entre 1 y 5)
-  - Duración
-  - Temporada (Verano, Otoño, Invierno o Primavera)
-
-La relación entre ambas entidades debe ser de muchos a muchos ya que un país puede contener varias actividades turísticas y, a su vez, una actividad turística puede darse en múltiples países. Por ejemplo una actividad podría ser "Ski" que podría ocurrir en Argentina y también en Estados Unidos, pero a su vez Argentina podría también incluir "Rafting".
-
-#### Backend
-
-Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
-
-__IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y paginados brindados por la API externa, todas estas funcionalidades tienen que implementarlas ustedes.
-
-- [ ] __GET /countries__:
-  - En una primera instancia deberán traer todos los países desde restcountries y guardarlos en su propia base de datos y luego ya utilizarlos desde allí (Debe almacenar solo los datos necesarios para la ruta principal)
-  - Obtener un listado de los paises.
-- [ ] __GET /countries/{idPais}__:
-  - Obtener el detalle de un país en particular
-  - Debe traer solo los datos pedidos en la ruta de detalle de país
-  - Incluir los datos de las actividades turísticas correspondientes
-- [ ] __GET /countries?name="..."__:
-  - Obtener los países que coincidan con el nombre pasado como query parameter (No necesariamente tiene que ser una matcheo exacto)
-  - Si no existe ningún país mostrar un mensaje adecuado
-- [ ] __POST /activity__:
-  - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de actividad turística por body
-  - Crea una actividad turística en la base de datos
-
-
-#### Testing
-- [ ] Al menos tener un componente del frontend con sus tests respectivos
-- [ ] Al menos tener una ruta del backend con sus tests respectivos
-- [ ] Al menos tener un modelo de la base de datos con sus tests respectivos
+---
+*Este proyecto fue creado como parte del bootcamp de Soy Henry.*
